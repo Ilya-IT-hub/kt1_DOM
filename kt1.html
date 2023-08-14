@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Таблица с числами</title>
+</head>
+<body>
+  <button onclick="addRandomNumber()">Добавить число</button>
+  <table id="numberTable"></table>
+
+  <script>
+    function addRandomNumber() {
+      const table = document.getElementById('numberTable');
+
+      // Генерация случайного числа
+      const randomNumber = Math.floor(Math.random() * 100);
+      
+      // Добавление числа в массив и в таблицу
+      numbers.push(randomNumber);
+      const rowIndex = Math.floor(numbers.length / 6); // Определение номера строки
+      const cellIndex = numbers.length % 6; // Определение номера ячейки
+      const cell = document.createElement('td');
+      cell.textContent = randomNumber;
+
+      // Проверка условия для окрашивания в оранжевый цвет
+      if (randomNumber >= 50) {
+        cell.style.backgroundColor = 'orange';
+      }
+
+      // Добавление ячейки в таблицу
+      if (!table.rows[rowIndex]) {
+        table.insertRow(rowIndex);
+      }
+      table.rows[rowIndex].appendChild(cell);
+    }
+
+    // Создание таблицы 5x6 со случайными числами и окрашивание ячеек, если число >= 50
+    const numbers = [];
+    const table = document.getElementById('numberTable');
+    for (let i = 0; i < 5; i++) {
+      const row = document.createElement('tr');
+      for (let j = 0; j < 6; j++) {
+        const cell = document.createElement('td');
+        const randomNumber = Math.floor(Math.random() * 100);
+        numbers.push(randomNumber);
+        cell.textContent = randomNumber;
+        if (randomNumber >= 50) {
+          cell.style.backgroundColor = 'orange';
+        }
+        row.appendChild(cell);
+      }
+      table.appendChild(row);
+    }
+  </script>
+</body>
+</html>

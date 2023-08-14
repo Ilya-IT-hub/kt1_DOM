@@ -11,29 +11,24 @@
     function addRandomNumber() {
       const table = document.getElementById('numberTable');
 
-      // Генерация случайного числа
       const randomNumber = Math.floor(Math.random() * 100);
       
-      // Добавление числа в массив и в таблицу
       numbers.push(randomNumber);
-      const rowIndex = Math.floor(numbers.length / 6); // Определение номера строки
-      const cellIndex = numbers.length % 6; // Определение номера ячейки
+      const rowIndex = Math.floor(numbers.length / 6);
+      const cellIndex = numbers.length % 6;
       const cell = document.createElement('td');
       cell.textContent = randomNumber;
 
-      // Проверка условия для окрашивания в оранжевый цвет
       if (randomNumber >= 50) {
         cell.style.backgroundColor = 'orange';
       }
 
-      // Добавление ячейки в таблицу
       if (!table.rows[rowIndex]) {
         table.insertRow(rowIndex);
       }
       table.rows[rowIndex].appendChild(cell);
     }
 
-    // Создание таблицы 5x6 со случайными числами и окрашивание ячеек, если число >= 50
     const numbers = [];
     const table = document.getElementById('numberTable');
     for (let i = 0; i < 5; i++) {
